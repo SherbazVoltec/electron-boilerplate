@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron-forge start",
     "dev": "webpack serve",
-    "build": "webpack && powershell -Command \"Copy-Item \"./main.js\" -Destination \"./dist/electron_entry.js\"\" && electron-forge start --app-path dist/electron_entry.js",
+    "build": "webpack --mode production && electron-forge start --app-path ./electron_entry.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "package": "electron-forge package",
     "make": "electron-forge make"
