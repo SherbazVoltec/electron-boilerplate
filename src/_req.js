@@ -1,3 +1,3 @@
 import './electron_entry.js'
-import "./styles/global"
+import "./styles/fonts"
 import './styles/main'

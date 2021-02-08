@@ -59,7 +59,9 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5"
   },
   "config": {
     "forge": {
