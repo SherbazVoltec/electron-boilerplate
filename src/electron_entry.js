@@ -10,7 +10,7 @@ createWindow = () => {
         }
     })
 
-    win.loadFile('dist/index.html')
+    win.loadFile('index.html')
 }
 
 

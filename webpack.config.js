@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 module.exports = {
     entry: "./index.js",
@@ -20,9 +21,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'index.html'
         }),
-        new CleanWebpackPlugin({
-            cleanAfterEveryBuildPatterns: ['dist']
-        })
+        new MiniCssExtractPlugin()
     ],
     module: {
         rules: [
@@ -37,10 +36,24 @@ module.exports = {
                 }
             }]
             },
+            // We use 2 loaders for CSS
+            // First process the css code and then connect it to
+            // the style loader
             {
-            test: /\.css$/,
-            use: "css-loader"
-            }
-         ]
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+            },
+            {
+                test: /electron_entry\.js/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'electron_entry.js',
+                            outputPath: './',
+                        }
+                    }]
+            },
+         ],
     }
 }

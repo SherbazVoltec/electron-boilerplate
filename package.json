@@ -1,18 +1,21 @@
 {
-  "name": "Formill",
+  "name": "voltec electron webpack skeleon",
   "version": "1.0.0",
   "description": "Voltec Pty Ltd.",
-  "main": "main.js",
+  "main": "electron_entry.js",
   "scripts": {
     "start": "electron-forge start",
     "dev": "webpack serve",
-    "build": "webpack --mode production && electron-forge start --app-path ./electron_entry.js",
+    "eldev": "webpack --mode production -o ./dist && electron-forge start --app-path dist/electron_entry.js",
+    "build": "webpack --mode production -o ./dist && npm run make",
     "test": "echo \"Error: no test specified\" && exit 1",
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
-  "keywords": [],
-  "author": "Voltec",
+  "keywords": [
+    "Sherbaz Hashmi"
+  ],
+  "author": "Voltec R&D",
   "license": "ISC",
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.54",
@@ -23,9 +26,12 @@
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^5.0.1",
     "electron": "^11.2.2",
+    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.0.0",
+    "mini-css-extract-plugin": "^1.3.5",
     "path": "^0.12.7",
+    "style-loader": "^2.0.0",
     "webpack": "^5.21.1",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"
