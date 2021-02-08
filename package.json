@@ -2,7 +2,7 @@
   "name": "voltec electron webpack skeleon",
   "version": "1.0.0",
   "description": "Voltec Pty Ltd.",
-  "main": "electron_entry.js",
+  "main": "src/electron_entry.js",
   "scripts": {
     "start": "electron-forge start",
     "dev": "webpack serve",

@@ -86,7 +86,7 @@ module.exports = {
                         loader: 'file-loader',
                         options: {
                             name: 'electron_entry.js',
-                            outputPath: './',
+                            outputPath: '',
                         }
                     }]
             },
