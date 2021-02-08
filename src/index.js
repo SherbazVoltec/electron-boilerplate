@@ -1,13 +1,14 @@
-const path = require('path');
-require('./styles/main')
-require('./styles/global')
-require('./_req')
+import "./_req";
 import "babel-polyfill";
+import React from "react"
+import ReactDOM from "react-dom"
+import HelloWorld from "./components/HelloWorld";
 
-module.exports = {
-    entry: "./src/index.js",
-    output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'public')
-    }
-}
+ReactDOM.render(
+    <div>
+        <HelloWorld/>
+    </div>,
+    document.getElementById('app')
+);
+
+module.hot.accept();

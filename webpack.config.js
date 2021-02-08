@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -16,16 +17,21 @@ module.exports = {
         stats: 'errors-only',
         open: true,
         port: 8080,
-        compress: true
+        compress: true,
+        hot: true
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: 'index.html'
         }),
         new MiniCssExtractPlugin({
-            filename: isDevelopment ? '[name].css' : '[name].[hash].css',
-            chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css', 
+            filename: isDevelopment ? '[name].css' : '[name].[fullhash].css',
+            chunkFilename: isDevelopment ? '[id].css' : '[id].[fullhash].css', 
         }),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.ProvidePlugin({
+            "React": "react",
+         }),
     ],
     module: {
         rules: 
@@ -92,7 +98,7 @@ module.exports = {
                     }]
             },
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: '/node_modules/',
                 use: {
                     loader: 'babel-loader',
@@ -100,11 +106,17 @@ module.exports = {
                         presets: []
                     }
                 }
-            }
+            },
          ],
     },
     resolve: {
         extensions: ['.js', '.jsx', '.scss']
     },
+
+    // This is disabled as we want to use React and ReactDOM internally.
+    // externals: {
+    //     react: "React",
+    //     "react-dom": "ReactDOM"
+    // }
 }
 
